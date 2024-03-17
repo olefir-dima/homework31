@@ -12,7 +12,7 @@ const host = process.env.HOST || "0.0.0.0";
 const server = fastify();
 
 server.register(fastifyStatic, {
-  root: path.join(__dirname, "../dist"),
+  root: path.join(__dirname, "../build"),
 });
 
 server.get("/hello", async (request, response) => {
