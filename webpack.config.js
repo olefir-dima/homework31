@@ -23,6 +23,18 @@ module.exports = {
         },
       },
       {
+        test: /\.(png|jpe?g|gif)$/i,
+        use: [
+          {
+            loader: "file-loader",
+            options: {
+              name: "[name].[contenthash].[ext]",
+              outputPath: "images",
+            },
+          },
+        ],
+      },
+      {
         test: /\.css$/i,
         use: [MiniCssExtractPlugin.loader, "css-loader"],
       },

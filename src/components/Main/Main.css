@@ -1,0 +1,17 @@
+.main {
+  display: flex;
+  justify-content: space-between;
+}
+
+.text-block {
+  padding: 50px;
+  width: 75%;
+}
+
+.text-block p {
+  font-size: 18px;
+}
+
+.logo-block {
+  margin-top: 20px;
+}

@@ -1,0 +1,24 @@
+.header {
+  background-color: #a2ab3b;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+}
+
+.header nav {
+  margin-top: 20px;
+}
+
+.menu-item {
+  display: inline-block;
+  margin-right: 60px;
+}
+
+.menu-item a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.menu-item a:hover {
+  text-decoration: underline;
+}
