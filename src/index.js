@@ -1,6 +1,6 @@
 import ReactDOM from "react-dom";
 import React, { useState, useEffect } from "react";
-import { HashRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Header from "./components/Header/Header";
 import Main from "./components/Main/Main";
 import Description from "./components/Main/Description";
@@ -19,7 +19,7 @@ function App() {
   }, []);
 
   return (
-    <HashRouter>
+    <BrowserRouter>
       <div className="app">
         <Header />
       </div>
@@ -32,7 +32,7 @@ function App() {
           <Route path="*" element={<h1>Упс... Щось пішло не так...</h1>} />
         </Route>
       </Routes>
-    </HashRouter>
+    </BrowserRouter>
   );
 }
 
