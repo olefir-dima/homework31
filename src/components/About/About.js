@@ -3,7 +3,7 @@ import "./About.css";
 
 function About() {
   return (
-    <div class="container">
+    <div className="container">
       <h1>Про нас</h1>
       <p>
         Ми - ваші кулінарні програмісти! У нашому Піца кафе ми поєднуємо смакові

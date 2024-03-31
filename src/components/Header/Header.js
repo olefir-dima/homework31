@@ -6,16 +6,16 @@ function Header() {
   return (
     <div className="header">
       <nav>
-        <div class="menu-item">
+        <div className="menu-item">
           <Link to="/">Головна</Link>
         </div>
-        <div class="menu-item">
+        <div className="menu-item">
           <Link to="/menu">Меню</Link>
         </div>
-        <div class="menu-item">
+        <div className="menu-item">
           <Link to="/about">Про нас</Link>
         </div>
-        <div class="menu-item">
+        <div className="menu-item">
           <Link to="/basket">Корзина</Link>
         </div>
       </nav>

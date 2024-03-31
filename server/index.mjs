@@ -15,9 +15,35 @@ server.register(fastifyStatic, {
   root: path.join(__dirname, "../build"),
 });
 
-server.get("/hello", async (request, response) => {
-  const data = request.body;
-  response.send({ message: "Hello world" });
+const menu = [
+  {
+    name: "Пепероні",
+    sizes: ["мала", "велика"],
+    prices: ["300", "350"],
+    available: true,
+  },
+  {
+    name: "Гавайська",
+    sizes: ["мала", "велика"],
+    prices: ["330", "360"],
+    available: true,
+  },
+  {
+    name: "Еспресо",
+    sizes: ["мала", "середня", "велика"],
+    prices: ["20", "25", "30"],
+    available: true,
+  },
+  {
+    name: "Латте",
+    sizes: ["мала", "середня", "велика"],
+    prices: ["25", "30", "35"],
+    available: true,
+  },
+];
+
+server.get("/menu", async (request, response) => {
+  response.send(menu);
 });
 
 server.listen({ port, host }).then(() => {
