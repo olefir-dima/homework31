@@ -1,12 +1,12 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import "./Menu.css";
 import { addItemToBasket, getBasket } from "../../localStorageUtil";
-import pizzaMarg from "../../img/pizzaMarg.jpg";
-import pizzaGav from "../../img/pizzaGav.jpg";
-import espresso from "../../img/espresso.png";
-import latte from "../../img/latte.jpg";
+import pizzaImg from "../../img/pizzaImg.jpg";
+import coffeeImg from "../../img/coffeeImg.png";
+import { selectPizzaItems, selectCoffeeItems } from "../../store";
 
-function MenuItem({ name, sizes, prices, image }) {
+function MenuItem({ name, sizes, prices, available, image }) {
   const [selectedSize, setSelectedSize] = useState(sizes[0]);
 
   const handleSizeChange = (event) => {
@@ -21,7 +21,7 @@ function MenuItem({ name, sizes, prices, image }) {
 
   return (
     <li>
-      <div>
+      <div className={available ? "" : "opacity"}>
         <img src={image} alt={name} width="300" height="200" />
         <div>
           <h3>{name}</h3>
@@ -43,7 +43,11 @@ function MenuItem({ name, sizes, prices, image }) {
           <br />
         </div>
       </div>
-      <button className="button" onClick={handleAddToBasket}>
+      <button
+        className="button"
+        onClick={handleAddToBasket}
+        disabled={!available}
+      >
         Додати в кошик
       </button>
     </li>
@@ -51,41 +55,38 @@ function MenuItem({ name, sizes, prices, image }) {
 }
 
 function Menu() {
-  const basket = getBasket();
+  const pizzaItems = useSelector(selectPizzaItems);
+  const coffeeItems = useSelector(selectCoffeeItems);
 
   return (
     <div className="container">
       <h1>Меню</h1>
       <h2>Піца</h2>
       <ul>
-        <MenuItem
-          name="Пепероні"
-          sizes={["мала", "велика"]}
-          prices={["300", "350"]}
-          image={pizzaMarg}
-        />
-        <MenuItem
-          name="Гавайська"
-          sizes={["мала", "велика"]}
-          prices={["330", "360"]}
-          image={pizzaGav}
-        />
+        {pizzaItems.map((pizzaItem) => (
+          <MenuItem
+            key={pizzaItem.name}
+            name={pizzaItem.name}
+            sizes={pizzaItem.sizes}
+            prices={pizzaItem.prices}
+            available={pizzaItem.available}
+            image={pizzaImg} // need update
+          />
+        ))}
       </ul>
 
       <h2>Кава</h2>
       <ul>
-        <MenuItem
-          name="Еспресо"
-          sizes={["мала", "середня", "велика"]}
-          prices={["20", "25", "30"]}
-          image={espresso}
-        />
-        <MenuItem
-          name="Латте"
-          sizes={["мала", "середня", "велика"]}
-          prices={["25", "30", "35"]}
-          image={latte}
-        />
+        {coffeeItems.map((coffeeItem) => (
+          <MenuItem
+            key={coffeeItem.name}
+            name={coffeeItem.name}
+            sizes={coffeeItem.sizes}
+            prices={coffeeItem.prices}
+            available={coffeeItem.available}
+            image={coffeeImg} // need update
+          />
+        ))}
       </ul>
     </div>
   );

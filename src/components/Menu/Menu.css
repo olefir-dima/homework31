@@ -28,3 +28,7 @@ p {
   color: #666;
   line-height: 1.6;
 }
+
+.opacity {
+  opacity: 0.5;
+}

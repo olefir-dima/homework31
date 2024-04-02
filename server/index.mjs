@@ -15,35 +15,40 @@ server.register(fastifyStatic, {
   root: path.join(__dirname, "../build"),
 });
 
-const menu = [
-  {
-    name: "Пепероні",
-    sizes: ["мала", "велика"],
-    prices: ["300", "350"],
-    available: true,
-  },
-  {
-    name: "Гавайська",
-    sizes: ["мала", "велика"],
-    prices: ["330", "360"],
-    available: true,
-  },
-  {
-    name: "Еспресо",
-    sizes: ["мала", "середня", "велика"],
-    prices: ["20", "25", "30"],
-    available: true,
-  },
-  {
-    name: "Латте",
-    sizes: ["мала", "середня", "велика"],
-    prices: ["25", "30", "35"],
-    available: true,
-  },
-];
+const price = {
+  pizza: [
+    {
+      name: "Пепероні",
+      sizes: ["мала", "велика"],
+      prices: ["300", "350"],
+      available: true,
+      image: "pizzaGav",
+    },
+    {
+      name: "Гавайська",
+      sizes: ["мала", "велика"],
+      prices: ["330", "360"],
+      available: true,
+    },
+  ],
+  coffee: [
+    {
+      name: "Еспресо",
+      sizes: ["мала", "середня", "велика"],
+      prices: ["20", "25", "30"],
+      available: true,
+    },
+    {
+      name: "Латте",
+      sizes: ["мала", "середня", "велика"],
+      prices: ["25", "30", "35"],
+      available: false,
+    },
+  ],
+};
 
-server.get("/menu", async (request, response) => {
-  response.send(menu);
+server.get("/price", async (request, response) => {
+  response.send(price);
 });
 
 server.listen({ port, host }).then(() => {
