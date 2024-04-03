@@ -1,6 +1,6 @@
 export const addItemToBasket = (item) => {
   const basket = getBasket();
-  const key = `${item.name} ${item.size}`;
+  const key = item.size ? `${item.name} ${item.size}` : item.name;
   if (basket[key]) {
     basket[key].quantity += 1;
   } else {
@@ -12,7 +12,7 @@ export const addItemToBasket = (item) => {
 
 export const removeItemFromBasket = (item) => {
   const basket = getBasket();
-  const key = `${item.name} ${item.size}`;
+  const key = item.size ? `${item.name} ${item.size}` : item.name;
   if (basket[key]) {
     if (basket[key].quantity > 1) {
       basket[key].quantity -= 1;

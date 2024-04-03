@@ -45,6 +45,20 @@ const price = {
       available: false,
     },
   ],
+  promo: [
+    {
+      name: "Пепероні(мала)+Еспресо(мала)",
+      prices: ["297"],
+      available: true,
+      image: "https://kh.vgorode.ua/img/article/6145/34_main-v1584375680.jpg",
+    },
+    {
+      name: "Гавайська(велика)+Латте(середня)",
+      prices: ["351"],
+      available: true,
+      image: "https://kh.vgorode.ua/img/article/6145/34_main-v1584375680.jpg",
+    },
+  ],
 };
 
 server.get("/price", async (request, response) => {

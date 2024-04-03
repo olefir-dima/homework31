@@ -8,7 +8,7 @@ import Description from "./components/Main/Description";
 import Menu from "./components/Menu/Menu";
 import About from "./components/About/About";
 import Basket from "./components/Basket/Basket";
-import store, { setPizzaItems, setCoffeeItems } from "./store";
+import store, { setPizzaItems, setCoffeeItems, setPromoItems } from "./store";
 
 function App() {
   const [message, setMessage] = useState("");
@@ -18,11 +18,13 @@ function App() {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        const { pizza, coffee } = data;
+        const { pizza, coffee, promo } = data;
         localStorage.setItem("pizzaItems", JSON.stringify(pizza));
         localStorage.setItem("coffeeItems", JSON.stringify(coffee));
+        localStorage.setItem("promoItems", JSON.stringify(promo));
         store.dispatch(setPizzaItems(pizza));
         store.dispatch(setCoffeeItems(coffee));
+        store.dispatch(setPromoItems(promo));
       })
       .catch((err) => {
         console.error("Error fetching message:" + err);

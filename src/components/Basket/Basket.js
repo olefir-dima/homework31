@@ -36,7 +36,7 @@ const Basket = () => {
   const handleRemoveItem = (itemName, itemSize) => {
     removeItemFromBasket({ name: itemName, size: itemSize });
     const updatedBasket = { ...basket };
-    delete updatedBasket[`${itemName} ${itemSize}`];
+    delete updatedBasket[`${itemSize ? itemName + " " + itemSize : itemName}`];
     setBasket(updatedBasket);
     setTotalItems(calculateTotalItems(updatedBasket));
     setTotalPrice(calculateTotalPrice(updatedBasket));
@@ -60,7 +60,7 @@ const Basket = () => {
               return (
                 <li key={itemKey}>
                   <p>
-                    {itemName} - {quantity} - {price} грн
+                    {itemKey} - {quantity} - {price} грн
                   </p>
                   <button onClick={() => handleRemoveItem(itemName, itemSize)}>
                     Видалити
