@@ -60,7 +60,7 @@ const Basket = () => {
               return (
                 <li key={itemKey}>
                   <p>
-                    {itemKey} - {quantity} шт - {price} грн
+                    {itemKey} - {quantity} X {price} грн
                   </p>
                   <button onClick={() => handleRemoveItem(itemName, itemSize)}>
                     Видалити
