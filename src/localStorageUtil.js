@@ -2,9 +2,9 @@ export const addItemToBasket = (item) => {
   const basket = getBasket();
   const key = `${item.name} ${item.size}`;
   if (basket[key]) {
-    basket[key] += 1;
+    basket[key].quantity += 1;
   } else {
-    basket[key] = 1;
+    basket[key] = { quantity: 1, price: item.price };
   }
   localStorage.setItem("basket", JSON.stringify(basket));
   return getTotalItems();
@@ -14,8 +14,8 @@ export const removeItemFromBasket = (item) => {
   const basket = getBasket();
   const key = `${item.name} ${item.size}`;
   if (basket[key]) {
-    if (basket[key] > 1) {
-      basket[key] -= 1;
+    if (basket[key].quantity > 1) {
+      basket[key].quantity -= 1;
     } else {
       delete basket[key];
     }
@@ -35,5 +35,8 @@ export const getBasket = () => {
 
 export const getTotalItems = () => {
   const basket = getBasket();
-  return Object.values(basket).reduce((total, quantity) => total + quantity, 0);
+  return Object.values(basket).reduce(
+    (total, { quantity, price }) => total + quantity * price,
+    0
+  );
 };

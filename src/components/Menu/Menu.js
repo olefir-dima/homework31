@@ -14,7 +14,11 @@ function MenuItem({ name, sizes, prices, available, image }) {
   };
 
   const handleAddToBasket = () => {
-    const item = { name, size: selectedSize };
+    const item = {
+      name,
+      size: selectedSize,
+      price: prices[sizes.indexOf(selectedSize)],
+    };
     addItemToBasket(item);
     alert(`Ви додали ${name} (${selectedSize}) до кошика!`);
   };
