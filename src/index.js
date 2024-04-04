@@ -40,9 +40,9 @@ function App() {
         <Routes>
           <Route path="/" element={<Main />}>
             <Route index element={<Description />} />
-            <Route path="/menu" element={<Menu />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/basket" element={<Basket />} />
+            <Route path="menu" element={<Menu />} />
+            <Route path="about" element={<About />} />
+            <Route path="basket" element={<Basket />} />
             <Route path="*" element={<h1>Упс... Щось пішло не так...</h1>} />
           </Route>
         </Routes>
