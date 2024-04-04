@@ -65,6 +65,10 @@ server.get("/price", async (request, response) => {
   response.send(price);
 });
 
+server.setNotFoundHandler((_, relply) => {
+  return relply.sendFile("index.html");
+});
+
 server.listen({ port, host }).then(() => {
   console.log("Server started on " + host + ":" + port);
 });
